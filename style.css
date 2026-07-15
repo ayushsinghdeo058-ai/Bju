@@ -1,0 +1,172 @@
+:root {
+    --bg-midnight: #050816;
+    --bg-navy: #091329;
+    --accent-gold: #FFD166;
+    --text-white: #FFFFFF;
+    --accent-pink: #F8BBD0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-midnight);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    /* Hide scrollbar for cinematic feel */
+    scrollbar-width: none; 
+}
+body::-webkit-scrollbar { display: none; }
+
+/* WebGL Background */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Typography */
+.serif-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 4rem);
+    letter-spacing: 1px;
+}
+.sans-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+.gold-text { color: var(--accent-gold); text-shadow: 0 0 20px rgba(255, 209, 102, 0.4); }
+.text-center { text-align: center; }
+.mt-2 { margin-top: 1rem; }
+.mt-4 { margin-top: 2rem; }
+
+/* Scene Management */
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+.active-scene {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+.hidden { display: none; opacity: 0; }
+
+/* Scene 1: Shooting Star */
+#shooting-star-btn {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 30px;
+}
+#shooting-star-btn:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--accent-gold));
+}
+
+/* Scene 2: 3D Storybook */
+.book-container {
+    perspective: 1500px;
+}
+.book {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #111a30, var(--bg-navy));
+    border: 1px solid rgba(255, 209, 102, 0.2);
+    border-radius: 4px 12px 12px 4px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    transform-origin: left center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    backface-visibility: hidden;
+}
+
+/* Scene 3 & 4 Layouts */
+.constellation-word, .blossom-text, .pre-question {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.glowing-heart {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 30px var(--text-white));
+}
+
+/* Scene 5: UI Elements */
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.proposal-btn {
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 1rem 2.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+.proposal-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--accent-gold);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+.proposal-btn:hover {
+    color: var(--bg-midnight);
+    box-shadow: 0 0 25px rgba(255, 209, 102, 0.5);
+}
+.proposal-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.proposal-btn.secondary {
+    border-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+}
+.proposal-btn.secondary:hover {
+    border-color: var(--accent-pink);
+    color: var(--bg-midnight);
+}
+.proposal-btn.secondary::before { background: var(--accent-pink); }
