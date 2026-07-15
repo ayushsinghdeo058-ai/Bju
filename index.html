@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make A Wish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <audio id="bg-music" loop>
+        <source src="assets/audio/surma.mp3" type="audio/mpeg">
+    </audio>
+
+    <main id="app-container">
+        
+        <section id="scene-1" class="scene active-scene">
+            <div class="content-wrapper text-center">
+                <h1 id="wish-text" class="serif-title"></h1>
+                <div id="shooting-star-btn" class="glow-element hidden">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFD166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <p class="sans-subtitle mt-2">Tap the star</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="scene-2" class="scene">
+            <div class="book-container">
+                <div class="book">
+                    <div class="page" id="page-1"><p class="type-target"></p></div>
+                    <div class="page" id="page-2"><p class="type-target"></p></div>
+                    <div class="page" id="page-3"><p class="type-target"></p></div>
+                    <div class="page" id="page-4"><p class="type-target"></p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scene-3" class="scene">
+            <div class="constellation-wrapper">
+                <h2 class="constellation-word serif-title" id="cw-1">Happiness</h2>
+                <h2 class="constellation-word serif-title" id="cw-2">Comfort</h2>
+                <h2 class="constellation-word serif-title" id="cw-3">Home</h2>
+                <h2 class="constellation-word serif-title" id="cw-4">You</h2>
+                <div class="glowing-heart hidden">🤍</div>
+            </div>
+        </section>
+
+        <section id="scene-4" class="scene">
+            <div class="blossom-text-wrapper text-center">
+                <h2 class="blossom-text serif-title">Every little moment...</h2>
+                <h2 class="blossom-text serif-title">Every smile...</h2>
+                <h2 class="blossom-text serif-title">Every conversation...</h2>
+                <h2 class="blossom-text serif-title">Made me realize something.</h2>
+            </div>
+        </section>
+
+        <section id="scene-5" class="scene">
+            <div class="proposal-wrapper text-center">
+                <h2 class="pre-question serif-title">So...</h2>
+                <h2 class="pre-question serif-title">Can I ask you one question?</h2>
+                
+                <h1 class="main-proposal serif-title gold-text hidden mt-4">Will you be my girlfriend?</h1>
+                
+                <div class="button-group hidden mt-4">
+                    <button id="btn-yes" class="proposal-btn">💖 Yes</button>
+                    <button id="btn-time" class="proposal-btn secondary">🌸 I need some time</button>
+                </div>
+
+                <h2 id="final-message" class="serif-title hidden mt-4">You just made my wish come true.</h2>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
